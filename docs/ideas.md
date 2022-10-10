@@ -1,10 +1,9 @@
+
+# Team Theta 
+
+# Application Name: Food Match
+
 # Team Overview
-
-Team Name : Theta
-
-Application Name: Food Match
-
-Team Members:
 
 Lenin Perdomo github: perdomolenin
 
