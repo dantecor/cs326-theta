@@ -1,0 +1,39 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(25, 24px);
+    grid-auto-rows: minmax(5px, auto);
+    grid-gap: 25px;
+    padding: 15px;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    font-size: x-large;
+}
+
+.grid-item2 {
+    display: block;
+    font-size: large;
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+.filter-text {
+    margin-left: 27%;
+}
+
+.filter-options {
+    margin-left: 43%;
+}
+
+.grid-item3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
