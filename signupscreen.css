@@ -1,0 +1,39 @@
+.font{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box
+{
+    display: inline-block;
+    padding-left: 160px;
+    padding-right: 160px;
+    padding-top: 100px;
+}
+.box2{
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    border: 3px solid black;
+    border-radius: 5%;
+}
+.temp2{
+    display: inline-block;
+}
+.button{
+    background-color: #096de8;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 7%;
+    font-size: 16px;
+
+}
+.temp
+{
+    display: inline-block;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
