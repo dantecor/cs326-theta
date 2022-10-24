@@ -24,15 +24,25 @@
             <label for="RestaurantName">Restaurant Name</label>
             <input type="text" class="form-control" id="RestaurantName" placeholder="Restaurant Name">
           </div>
+          <div class="form-group col-md-6">
+            <label for="RestaurantPhone">Phone Number</label>
+            <input type="text" class="form-control" id="RestaurantPhone" placeholder="Phone Number">
+          </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="RestaurantHours">Restaurant Hours</label>
+              <input type="text" class="form-control" id="RestaurantHours" placeholder="Restaurant Hours">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="RestaurantWeb">Website</label>
+              <input type="text" class="form-control" id="RestaurantWeb" placeholder="Restaurant Website">
+            </div>
+          </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
             <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
@@ -61,10 +71,7 @@
           </div>
         </div>
         
-       
-
-
-
+    
 
       </form>
 
@@ -168,16 +175,20 @@
         <input type="file" class="custom-file-input" id="customFile">
         <label class="custom-file-label" for="customFile">Add Pictures</label>
         <br><br>
-        <button type="submit" class="btn btn-primary">Submit Form</button>
         <br><br>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+            <button id="submit-btn"type="submit" class="btn btn-primary" onclick="window.location.href='menu.html'">Submit Form</button>
+        </div>
+        <div class="form-group col-md-4">
+            <button id="cancel-btn" type="submit" class="btn btn-primary" onclick="window.location.href='menu.html'">Cancel</button>
+        </div>
       </div>
     </div>
 
 
 
-
-
-   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
