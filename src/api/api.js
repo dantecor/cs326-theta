@@ -27,9 +27,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/foodfight', (req, res) => {
-    res.send('Hello World, from express');
-});
 
 app.get('/home', function(req, res) {
     const path = __dirname;
