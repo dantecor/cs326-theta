@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Full Menu</title>
+
+        <link rel="stylesheet" href="menu.css" />
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="grid-item grid-item1">
+                <h1>{Restaurant Name} Menu</h1>
+            </div>
+            <div class="grid-item grid-item2">
+                <p class="filter-text">Select Filters (Multiple Select using Ctrl on Windows and Command on Mac)</p>
+                <form class="filter-options">
+                    <select name="allergens" id="allergens" multiple>
+                      <option value="wheat">Wheat</option>
+                      <option value="fish">Fish</option>
+                      <option value="milk">Milk</option>
+                      <option value="eggs">Eggs</option>
+                      <option value="peanuts">Peanuts</option>
+                      <option value="soybeans">Soybeans</option>
+                      <option value="tree-nuts">Tree Nuts</option>
+                      <option value="crustacean-shellfish">Crustacean Shellfish</option>
+                    </select>
+                </form>
+            </div>
+            <div class="grid-item grid-item3">
+                <ul>
+                    <li>Menu items list starts here</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
