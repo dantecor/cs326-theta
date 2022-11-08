@@ -66,6 +66,15 @@ const sampleRestaurant =
 }
 
 
+const listOfRestaurants = {
+    'restaurants': 
+    [
+    'Antonios Pizza',
+    'Burger King'
+    ]
+}
+
+
 
 
 // middleware that is specific to this router
@@ -73,7 +82,7 @@ router.use((req, res, next) => {
   console.log('Time: ', Date.now())
   next()
 })
-// define the home page route
+// this is returning restaurant .json 
 router.get('/', (req, res) => {
   const json = JSON.stringify(sampleRestaurant);
   res.send(json);
@@ -82,6 +91,35 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
   res.send('About foodmatch')
 })
+
+
+router.get('/listOfRestaurants', (req, res) => {
+    const json = JSON.stringify(listOfRestaurants);
+    res.send(json);
+  })
+
+  //login 
+
+
+
+  //signup
+
+
+
+
+  //submit restaurant form
+
+
+
+
+
+  //get restaurant 
+
+
+
+
+
+
 
 module.exports = router
 
