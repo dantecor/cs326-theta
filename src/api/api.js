@@ -1,5 +1,6 @@
-
 const express = require('express');
+const foodMatchAPI = require('./food-match-api/food-match-api')
+
 //var bodyParser = require('body-parser');
 //var multer = require('multer');
 //var upload = multer();
@@ -16,12 +17,11 @@ const port = 3000;
 
 app.use(express.static(__dirname+'/resources'));
 app.use(express.static(__dirname+'/controllers'));
-
-
+app.use('/api', foodMatchAPI);
 
 //app.listen(3000);
 //app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || port);
 
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
