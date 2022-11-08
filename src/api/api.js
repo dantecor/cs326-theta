@@ -20,7 +20,8 @@ app.use(express.static(__dirname+'/controllers'));
 
 
 //app.listen(3000);
-app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
+//app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
+app.listen(process.env.PORT || 3000);
 
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
