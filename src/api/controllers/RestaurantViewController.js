@@ -13,7 +13,7 @@ window.initMap = initMap;
 
 let restaurant = {};
 
-(async ()=>{ const data = await fetch("https://cs326-theta.herokuapp.com/api")
+(async ()=>{ const data = await fetch("https://cs326-theta.herokuapp.com/api/restaurant")
   if(data.ok)
   {
     restaurant = await data.json();

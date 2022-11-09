@@ -63,8 +63,8 @@ router.use((req, res, next) => {
 })
 // define the home page route
 router.get('/', (req, res) => {
-  const json = JSON.stringify(sampleRestaurant);
-  res.send(json);
+  //const json = JSON.stringify(sampleRestaurant);
+  res.send(sampleRestaurant);
 })
 
 router.get('/restaurant', cors(), function (req, res, next) {
