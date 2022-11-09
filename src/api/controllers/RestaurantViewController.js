@@ -27,6 +27,30 @@ let restaurant = {};
 
 
 
+console.log(restaurant);
+
+const button = document.getElementById("HELLO");
+button.addEventListener("click", () => {
+
+  console.log("HELLO");
+  console.log(restaurant);
+  console.log(restaurant.name);
+  console.log(restaurant.address);
+  console.log(restaurant.phone);
+
+  const AppetizersList = document.getElementById("Appetizers-list");
+  let div = document.createElement("div");
+  let keys = Object.keys(restaurant.Menu.Appetizers[0]);
+  div.innerHTML = keys[0];
+  //add class to div
+  div.classList.add("list-group-item");
+  AppetizersList.appendChild(div);
+
+});
+
+
+
+
 
 
 
