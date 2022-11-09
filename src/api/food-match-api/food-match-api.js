@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const cors = require('cors')
 //import sampleRestaurant from './testData/data.js'
 //const sampleRestaurant = require('./testData/data.js')
 //import { sampleRestaurant } from './testData/data.js';
@@ -64,6 +65,13 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
   const json = JSON.stringify(sampleRestaurant);
   res.send(json);
+})
+
+router.get('/restaurant', cors(), function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for a Single Route'})
+    const json = JSON.stringify(sampleRestaurant);
+    res.send(json);
+
 })
 // define the about route
 router.get('/about', (req, res) => {

@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors')
 const foodMatchAPI = require('./food-match-api/food-match-api')
+
+
 
 //var bodyParser = require('body-parser');
 //var multer = require('multer');
@@ -14,6 +17,8 @@ const port = 3000;
 //app.use(upload.array());
 
 //Require the Router we defined in movies.js
+
+app.use(cors());
 
 app.use(express.static(__dirname+'/resources'));
 app.use(express.static(__dirname+'/controllers'));
