@@ -69,8 +69,8 @@ router.get('/', (req, res) => {
 
 router.get('/restaurant', cors(), function (req, res, next) {
     
-    const json = JSON.stringify(sampleRestaurant);
-    res.json(json);
+    //const json = JSON.stringify(sampleRestaurant);
+    res.json(sampleRestaurant);
     //res.send(json);
 
 })
