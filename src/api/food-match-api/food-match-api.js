@@ -68,9 +68,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/restaurant', cors(), function (req, res, next) {
-    res.json({msg: 'This is CORS-enabled for a Single Route'})
+    
     const json = JSON.stringify(sampleRestaurant);
-    res.send(json);
+    res.json(json);
+    //res.send(json);
 
 })
 // define the about route
