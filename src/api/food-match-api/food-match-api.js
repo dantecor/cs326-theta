@@ -11,56 +11,46 @@ const sampleRestaurant =
     'address': '1 East Pleasant Street',
     'phoneNumber':'777-777-7777',
     'Website':'www.restaurant.com',
+    'hours': '7am-7pm',
     'Menu' : {
         'Appetizers':
-        {
-            'Vegetarians':
+        [
+            {
+                'Chicn Wings': 
                 [
-                    'Chic’n wings'
-                ],
-
-            'Vegan':
-                [
-                    'Salad'
-                ],
-            'Glutenfree':
-                [
-                    'Salad'
+                    'Vegan',
+                    'Glutenfree'   
                 ]
-        },
-        'Entree':
-        {
-            'Vegetarians':
-                [
-                    'Chic’n wings'
-                ],
-            'Vegan':
-                [
-                    'Salad'
-                ],
-            
-            'Glutenfree':
+            }
+
+        ],
+        'Entrees':
+        [
+            {
+                'Chicken':
                 [
                     'Glutenfree'
                 ]
-    
-        },
+            }
+        ],
+        'Desserts':
+        [
+            {
+                'Ice Cream':
+                [
+                    'Vegan',
+                ]
+            }
+        ],
         'Drinks':
-        {
-            'Vegetarians':
-            [
-                'water'
-            ],
-        
-            'Vegan':
-            [
-                'water'
-            ],
-            'Glutenfree':
-            [
-                'water'
-            ]
-        }
+        [
+            {
+                'Water':
+                [ 
+                    'Vegan',
+                ]
+            }
+        ]
     }
 }
 

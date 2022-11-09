@@ -10,3 +10,23 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+let restaurant = {};
+
+(async ()=>{ const data = await fetch("http://localhost:3000/api/")
+  if(data.ok)
+  {
+    restaurant = await data.json();
+  }
+  else
+  {
+    console.log("Error");
+  }
+
+})();
+
+
+
+
+
+
