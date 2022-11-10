@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
 });
 
 
-
 app.get('/home', function(req, res) {
     const path = __dirname;
     res.sendFile(path+'/resources/homepage.html');
@@ -53,6 +52,13 @@ app.get('/restaurant', function(req, res) {
     const path = __dirname;
     res.sendFile(path+'/resources/RestaurantView.html');
 });
+
+//ROHIT
+app.get('/signup', function(req, res) {
+    const path = __dirname;
+    res.sendFile(path+'/resources/signup.html');
+});
+
 
 
 
