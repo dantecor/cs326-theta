@@ -3,20 +3,10 @@ const cors = require('cors')
 const foodMatchAPI = require('./food-match-api/food-match-api')
 
 
-
-//var bodyParser = require('body-parser');
-//var multer = require('multer');
-//var upload = multer();
-
 const app = express();
 const port = 3000;
 
-//app.use(cookieParser());
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(upload.array());
 
-//Require the Router we defined in movies.js
 
 app.use(cors());
 

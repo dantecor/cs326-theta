@@ -1,0 +1,17 @@
+#allergensCheck{
+
+    margin-left :5px;
+    padding-left: 5px;
+}
+
+.checkboxes {
+    text-align:center;
+  }
+  
+  .checkboxes input{
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .checkboxes label{
+    margin: 0px 20px 0px 3px;
+  }

@@ -1,10 +1,20 @@
 const express = require('express')
 const router = express.Router()
 const cors = require('cors')
-//import sampleRestaurant from './testData/data.js'
-//const sampleRestaurant = require('./testData/data.js')
-//import { sampleRestaurant } from './testData/data.js';
-//const sampleRestaurant = require('./')
+const bodyParser = require('body-parser')
+
+const jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+ 
+// POST /login gets urlencoded bodies
+router.post('/login', urlencodedParser, function (req, res) {
+  res.send('welcome, ' + req.body.username)
+})
+
+
+ 
 
 const sampleRestaurant = 
     {
@@ -23,7 +33,6 @@ const sampleRestaurant =
                     'Glutenfree'   
                 ]
             }
-
         ],
         'Entrees':
         [
@@ -83,6 +92,21 @@ router.get('/about', (req, res) => {
 router.get('/signup', (req, res) => {
     res.send('Signup page');
 })
+
+  
+
+
+router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
+    console.log(req.body);
+    console.log(req.body);
+    console.log("restaurantcreated");
+    //res.send(req.body);
+    res.send("restaurantcreated");
+});
+
+
+
+
 
 module.exports = router
 

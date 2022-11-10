@@ -17,6 +17,9 @@ let restaurant = {};
   if(data.ok)
   {
     restaurant = await data.json();
+    setUpPage();
+    
+
   }
   else
   {
@@ -47,6 +50,89 @@ button.addEventListener("click", () => {
   AppetizersList.appendChild(div);
 
 });
+
+function setUpPage()
+{
+  const restaurantName = document.getElementById("RestaurantName");
+  restaurantName.innerHTML = 'Name: '+restaurant.restaurantName;
+
+  const restaurantAddress = document.getElementById("RestaurantContact");
+  restaurantAddress.innerHTML = 'Phone: '+restaurant.phoneNumber;
+
+
+  const restaurantHours = document.getElementById("RestaurantHours");
+  restaurantHours.innerHTML = 'Hours: '+restaurant.hours;
+
+  const restaurantWebsite = document.getElementById("RestaurantWebsite");
+  restaurantWebsite.innerHTML = 'Website: '+restaurant.Website;
+
+  const AppetizersList = document.getElementById("Appetizers-list");
+  
+
+  let appetizers = restaurant.Menu.Appetizers;
+  appetizers.forEach(element => {
+    let div = document.createElement("div");
+    let keys = Object.keys(element);
+  div.innerHTML = keys[0];
+  //add class to div
+  div.classList.add("list-group-item");
+  AppetizersList.appendChild(div);
+
+  });
+
+  const EntreesList = document.getElementById("Entrees-list");
+
+  let entrees = restaurant.Menu.Entrees;
+  entrees.forEach(element => {
+    let div = document.createElement("div");
+    let keys = Object.keys(element);
+  div.innerHTML = keys[0];
+  //add class to div
+  div.classList.add("list-group-item");
+  EntreesList.appendChild(div);
+
+  });
+
+  const DessertsList = document.getElementById("Desserts-list");
+
+  let desserts = restaurant.Menu.Desserts;
+
+  desserts.forEach(element => {
+    let div = document.createElement("div");
+    let keys = Object.keys(element);
+  div.innerHTML = keys[0];
+  //add class to div
+  div.classList.add("list-group-item");
+  DessertsList.appendChild(div);
+
+  });
+
+  let drinks = restaurant.Menu.Drinks;
+
+  const drinksList = document.getElementById("Drinks-list");
+
+  drinks.forEach(element => {
+    let div = document.createElement("div");
+    let keys = Object.keys(element);
+  div.innerHTML = keys[0];
+  //add class to div
+    
+  div.classList.add("list-group-item");
+  drinksList.appendChild(div);
+
+  });
+
+
+
+  
+
+
+
+
+
+
+
+}
 
 
 
