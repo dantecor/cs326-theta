@@ -25,16 +25,28 @@ The Food Match Web-API utilizes standard HTTP communication and uses REST concep
 
 # CRUD Operations Examples
 **Create:** </br>
-[Create screenshots and return values goes here] </br>
+![Main](./milestone2-images/form.png)
+adding support to create restaurant
+![Main](./milestone2-images/create.png)
+
+ </br>
 
 **Read:** </br>
-[Read screenshots and return values goes here] </br>
+![Main](./milestone2-images/menu.png)
+![Main](./milestone2-images/get.png)
+
+
+Webpage will request json with menu data
+</br>
 
 **Update:** </br>
-[Update screenshots and return values goes here] </br>
+![Main](./milestone2-images/signup.png) </br>
+![Main](./milestone2-images/screen1.png)
+![Main](./milestone2-images/sign.png)
 
 **Delete:** </br>
-[Delete screenshots and return values goes here] </br>
+WIP
+ </br>
 
 
 
