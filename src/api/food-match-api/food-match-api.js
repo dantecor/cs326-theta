@@ -7,7 +7,7 @@ const router = express.Router()
 
 const sampleRestaurant = 
     {
-    'restaurantName': 'aRestaurant',
+    'restaurantName': 'temppppppp',
     'address': '1 East Pleasant Street',
     'phoneNumber':'777-777-7777',
     'Website':'www.restaurant.com',
@@ -62,19 +62,7 @@ const sampleRestaurant =
             ]
         }
     }
-    
 }
-
-
-const listOfRestaurants = {
-    'restaurants': 
-    [
-    'Antonios Pizza',
-    'Burger King'
-    ]
-}
-
-
 
 
 // middleware that is specific to this router
@@ -82,7 +70,7 @@ router.use((req, res, next) => {
   console.log('Time: ', Date.now())
   next()
 })
-// this is returning restaurant .json 
+// define the home page route
 router.get('/', (req, res) => {
   const json = JSON.stringify(sampleRestaurant);
   res.send(json);
@@ -92,34 +80,10 @@ router.get('/about', (req, res) => {
   res.send('About foodmatch')
 })
 
-
-router.get('/listOfRestaurants', (req, res) => {
-    const json = JSON.stringify(listOfRestaurants);
-    res.send(json);
-  })
-
-  //login 
-
-
-
-  //signup
-
-
-
-
-  //submit restaurant form
-
-
-
-
-
-  //get restaurant 
-
-
-
-
-
-
+//ROHIT: define the signup route
+router.get('/signup', (req, res) => {
+    res.send('Signup page');
+})
 
 module.exports = router
 
