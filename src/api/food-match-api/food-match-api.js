@@ -94,15 +94,20 @@ router.get('/signup', (req, res) => {
 })
 
   
-
-
 router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
     console.log(req.body);
     console.log(req.body);
     console.log("restaurantcreated");
-    //res.send(req.body);
-    res.send("restaurantcreated");
+    res.send(req.body);
+    //res.send("restaurantcreated");
 });
+
+//handle wildcard
+router.get('*', (req, res) => {
+    res.send('404: Page not found');
+});
+
+
 
 
 

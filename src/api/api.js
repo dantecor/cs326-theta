@@ -14,12 +14,13 @@ app.use(express.static(__dirname+'/resources'));
 app.use(express.static(__dirname+'/controllers'));
 app.use('/api', foodMatchAPI);
 
-//app.listen(3000);
+
 //app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
 app.listen(process.env.PORT || port);
 
 app.get('/', (req, res) => {
-    res.send('Hello World, from express');
+    const path = __dirname;
+    res.sendFile(path+'/resources/homepage.html');
 });
 
 
@@ -52,6 +53,10 @@ app.get('/restaurant', function(req, res) {
 app.get('/signup', function(req, res) {
     const path = __dirname;
     res.sendFile(path+'/resources/signup.html');
+});
+
+app.get('*', (req, res) => {
+    res.send('404: Page not found');
 });
 
 
