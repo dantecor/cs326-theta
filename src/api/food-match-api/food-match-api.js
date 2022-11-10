@@ -1,9 +1,20 @@
 const express = require('express')
 const router = express.Router()
-//import sampleRestaurant from './testData/data.js'
-//const sampleRestaurant = require('./testData/data.js')
-//import { sampleRestaurant } from './testData/data.js';
-//const sampleRestaurant = require('./')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+
+const jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+ 
+// POST /login gets urlencoded bodies
+router.post('/login', urlencodedParser, function (req, res) {
+  res.send('welcome, ' + req.body.username)
+})
+
+
+ 
 
 const sampleRestaurant = 
     {
@@ -11,56 +22,45 @@ const sampleRestaurant =
     'address': '1 East Pleasant Street',
     'phoneNumber':'777-777-7777',
     'Website':'www.restaurant.com',
+    'hours': '7am-7pm',
     'Menu' : {
         'Appetizers':
-        {
-            'Vegetarians':
+        [
+            {
+                'Chicn Wings': 
                 [
-                    'Chic’n wings'
-                ],
-
-            'Vegan':
-                [
-                    'Salad'
-                ],
-            'Glutenfree':
-                [
-                    'Salad'
+                    'Vegan',
+                    'Glutenfree'   
                 ]
-        },
-        'Entree':
-        {
-            'Vegetarians':
-                [
-                    'Chic’n wings'
-                ],
-            'Vegan':
-                [
-                    'Salad'
-                ],
-            
-            'Glutenfree':
+            }
+        ],
+        'Entrees':
+        [
+            {
+                'Chicken':
                 [
                     'Glutenfree'
                 ]
-    
-        },
+            }
+        ],
+        'Desserts':
+        [
+            {
+                'Ice Cream':
+                [
+                    'Vegan',
+                ]
+            }
+        ],
         'Drinks':
-        {
-            'Vegetarians':
-            [
-                'water'
-            ],
-        
-            'Vegan':
-            [
-                'water'
-            ],
-            'Glutenfree':
-            [
-                'water'
-            ]
-        }
+        [
+            {
+                'Water':
+                [ 
+                    'Vegan',
+                ]
+            }
+        ]
     }
 }
 
@@ -72,8 +72,16 @@ router.use((req, res, next) => {
 })
 // define the home page route
 router.get('/', (req, res) => {
-  const json = JSON.stringify(sampleRestaurant);
-  res.send(json);
+  //const json = JSON.stringify(sampleRestaurant);
+  res.send(sampleRestaurant);
+})
+
+router.get('/restaurant', cors(), function (req, res, next) {
+    
+    //const json = JSON.stringify(sampleRestaurant);
+    res.json(sampleRestaurant);
+    //res.send(json);
+
 })
 // define the about route
 router.get('/about', (req, res) => {
@@ -84,6 +92,21 @@ router.get('/about', (req, res) => {
 router.get('/signup', (req, res) => {
     res.send('Signup page');
 })
+
+  
+
+
+router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
+    console.log(req.body);
+    console.log(req.body);
+    console.log("restaurantcreated");
+    //res.send(req.body);
+    res.send("restaurantcreated");
+});
+
+
+
+
 
 module.exports = router
 
