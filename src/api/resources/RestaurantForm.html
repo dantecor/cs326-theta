@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
-
-    <link rel="stylesheet" type="text/css" href="./RestaurantForm.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
@@ -82,7 +80,7 @@
 
     <div class="container" id="MenuItems">
       <form>
-        <div class="form-row" id="appetizersList">
+        <div class="form-row">
           <div class="form-group col-md-6">
             <label for="Appetizers">Appetizers</label>
             <input type="text" class="form-control" id="Appetizers" placeholder="...">
@@ -90,37 +88,33 @@
           <div class="form-group col-md-4">
             <label for="allergenDrop-app">Allergens</label>
             <br>
-            <div class="checkboxes">
-              <span>
-                <input type="checkbox" name="Gluten-free" value="Gluten-free"> <label>Gluten-free</label>
-                <input type="checkbox" name="Soy-free" value="Soy-free"> <label>Soy-free</label>
-                <input type="checkbox" name="Vegan" value="Vegan"> <label>Vegan</label>
-              </span>
-              </div>
+            <select id="allergenDrop-app" class="selectpicker" multiple="multiple">
+              <option>Gluten</option>
+              <option>Vegan</option>
+              <option>Soy</option>
+            </select>
           </div>
           <div class="form-group col-md-2">
             <label for="addAppetizers">Add Appetizers</label>
             <br>
-            <button id="addAppetizers" type="button" class="btn btn-primary">+</button>
+            <button id="addAppetizers" type="submit" class="btn btn-primary">+</button>
           </div>
         </div>
 
 
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="Entree">Entree #2</label>
-            <input type="text" class="form-control" id="Entree1" placeholder="...">
+            <label for="Entree">Entree</label>
+            <input type="text" class="form-control" id="Entree" placeholder="...">
           </div>
           <div class="form-group col-md-4">
             <label for="allergenDrop-ent">Allergens</label>
             <br>
-            <div class="checkboxes">
-              <span>
-                <input type="checkbox" name="Gluten-free" value="Gluten-free"> <label>Gluten-free</label>
-                <input type="checkbox" name="Soy-free" value="Soy-free"> <label>Soy-free</label>
-                <input type="checkbox" name="Vegan" value="Vegan"> <label>Vegan</label>
-              </span>
-              </div>
+            <select id="allergenDrop-ent" class="selectpicker" multiple="multiple">
+              <option>Gluten</option>
+              <option>Vegan</option>
+              <option>Soy</option>
+            </select>
           </div>
           <div class="form-group col-md-2">
             <label for="addEntrees">Add Entrees</label>
@@ -128,6 +122,8 @@
             <button id="addEntrees" type="submit" class="btn btn-primary">+</button>
           </div>
         </div>
+
+
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="Dessert">Dessert</label>
@@ -136,13 +132,11 @@
           <div class="form-group col-md-4">
             <label for="allergenDrop">Allergens</label>
             <br>
-            <div class="checkboxes">
-              <span>
-                <input type="checkbox" name="Gluten-free" value="Gluten-free"> <label>Gluten-free</label>
-                <input type="checkbox" name="Soy-free" value="Soy-free"> <label>Soy-free</label>
-                <input type="checkbox" name="Vegan" value="Vegan"> <label>Vegan</label>
-              </span>
-              </div>
+            <select id="allergenDrop" class="selectpicker" multiple="multiple">
+              <option>Gluten</option>
+              <option>Vegan</option>
+              <option>Soy</option>
+            </select>
           </div>
           <div class="form-group col-md-2">
             <label for="addDesserts">Add Desserts</label>
@@ -185,7 +179,7 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
-            <button id="submit-btn"type="button" class="btn btn-primary">Submit Form</button>
+            <button id="submit-btn"type="submit" class="btn btn-primary" onclick="window.location.href='menu.html'">Submit Form</button>
         </div>
         <div class="form-group col-md-4">
             <button id="cancel-btn" type="submit" class="btn btn-primary" onclick="window.location.href='menu.html'">Cancel</button>
@@ -204,8 +198,6 @@
     <script>
       $('select').selectpicker();
   </script>
-
-  <script src="../controllers/RestaurantFormController.js"></script>
     
   </body>
 </html>

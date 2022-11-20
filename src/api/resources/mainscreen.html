@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href = "mainscreen.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-    <script type="module" src="./mainscreencontroller.js"></script>
-</head>
-<body style="background-color:rgb(0, 140, 255);">
+    <link rel="stylesheet" href="mainscreen.css">
     <center>
-    <div>
-        <br>
-    </div>
-    <div class="card" style="width: 40rem; height: 48rem;">
-        <div class="card-body">
-            <h1 class = "font-header">Available Restaurants in {Select Location}</h1>
-            <br><br><br><br><br>
-            <div>
-                <div class="list-group" id = "table" style="width: 20rem;">
-                </div>
-              </div>
-              <button class="btn btn-primary" id="find" type="submit">Find Restaurants</button>
-        </div>
-    </div>
+    <h1 class = "font">Available Restaurants in {Select Location}</h1>
     </center>
+</head>
+<body>
+    <center>
+    <div class="box">
+      
+    </div>
+    <div class= "font"> 
+        <label class = "bottom">
+            Edit Allergens
+        </label>
+        </center>
+        <center>
+        <select name="allergens" id="allergens" class = "dropdown">
+        </select>
+        </center>
+        <center>
+        <label class ="spacing">
+            Would you like your restaurant to show
+        </label>
+        <br>
+        <label>
+            up here? Click here to add restaurant
+        </label>
+        <br>
+        <label class = "bottom">
+            information
+        </label>
+        </center>
+        <center>
+            <a href ="RestaurantForm.html">
+                <button class= "button">
+                    Add Restaurant
+                </button>
+            </a>
+        </center>
+    </div>
 </body>
