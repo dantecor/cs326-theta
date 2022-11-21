@@ -4,6 +4,22 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const jsonParser = bodyParser.json()
+
+const { Client } = require('pg');
+
+let secrets;
+let dbURL;
+if (!process.env.DATABASE_URL) 
+{
+    secrets = require('./../../../secrets.json');
+    dbURL = secrets.dbURI;
+} 
+    else 
+{
+    dbURL = process.env.DATABASE_URL;
+}
+
+
  
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -12,6 +28,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.post('/login', urlencodedParser, function (req, res) {
   res.send('welcome, ' + req.body.username)
 })
+
 
 
  
@@ -100,6 +117,27 @@ router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
     console.log("restaurantcreated");
     res.send(req.body);
     //res.send("restaurantcreated");
+});
+
+router.get('/testing', (req, res) => {
+
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      
+      client.connect();
+      
+      client.query('SELECT * from restaurant;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          console.log(JSON.stringify(row));
+        }
+        client.end();
+      });
+    
 });
 
 //handle wildcard
