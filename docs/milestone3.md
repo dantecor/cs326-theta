@@ -13,9 +13,17 @@ side sends a post request to the food-match-api endpoint, which then injects the
 <img width="884" alt="Screen Shot 2022-11-20 at 9 06 20 PM" src="https://user-images.githubusercontent.com/29220673/202969828-bf710d3a-bc7b-421b-8cdb-19b576814ad8.png">
 <img width="830" alt="Screen Shot 2022-11-20 at 9 06 06 PM" src="https://user-images.githubusercontent.com/29220673/202969808-918eec84-1110-4a3c-bc95-0389d4b35df0.png">
 
+This image shows the routing that will be called from the previous code, which then sends the data into the SQL database.
+
+<img width="920" alt="Screen Shot 2022-11-20 at 9 06 55 PM" src="https://user-images.githubusercontent.com/29220673/202969900-776179e2-9c79-4300-be42-0f3c02e572b7.png">
 
 Similarly, the restaurant files do something similar. The second image displays this. User enters data, which is then stored as a JSON variable,
 and then sent to food-match-api.js using a POST request. Then, a SQL query is created and sent to the server. This is outlined in the second image.
+
+
+This image shows the routing for the SQL query, which is called from the viewcontroller once the user enters data:
+
+<img width="849" alt="Screen Shot 2022-11-20 at 9 08 07 PM" src="https://user-images.githubusercontent.com/29220673/202970044-260adae6-9237-4707-8513-3a9b24505420.png">
 
 We also created a SQL file, which sets up the SQL tables with dummy data, making it easier to send dummy requests. 
 <img width="1130" alt="Screen Shot 2022-11-20 at 9 05 15 PM" src="https://user-images.githubusercontent.com/29220673/202969728-0e31d2ec-1418-447e-8330-c71cd12f8a5b.png">
