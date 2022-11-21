@@ -232,30 +232,6 @@ CREATE TABLE users(
     FOREIGN KEY(user_id) REFERENCES allergy_info(user_id) 
 );
 
-INSERT INTO users VALUES(
-	1,
-    'Lenin',
-    'Perdomo',
-    'lperdomo@umass.edu',
-    'lenin_password'
-);
-
-INSERT INTO users VALUES(
-	2,
-    'Rohit',
-    'Sonawane',
-    'rsonawane@umass.edu',
-    'rohit_password'
-);
-
-INSERT INTO users VALUES(
-	3,
-    'Dante',
-    'Cortez',
-    'dcortez@umass.edu',
-    'dante_password'
-);
-
 /*
 CREATE VIEW public_users AS
 SELECT user_id, first_name, last_name, email
