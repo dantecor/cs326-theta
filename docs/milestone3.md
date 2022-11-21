@@ -29,9 +29,14 @@ We also created a SQL file, which sets up the SQL tables with dummy data, making
 <img width="1130" alt="Screen Shot 2022-11-20 at 9 05 15 PM" src="https://user-images.githubusercontent.com/29220673/202969728-0e31d2ec-1418-447e-8330-c71cd12f8a5b.png">
 
 We also created a secrets.JSON file which allowed encryption using hashes for passwords.
+<img width="974" alt="Screen Shot 2022-11-20 at 9 10 23 PM" src="https://user-images.githubusercontent.com/29220673/202970322-01399b2e-f12a-4913-86c8-aed0a8c67140.png">
 
 
 Contributions: 
 Dante: Secrets.JSON, Restaurants POST request + routing + injecting restaurant data into SQL database
+
+
 Rohit: Injecting New User data into SQL database using query
+
+
 Lenin: Creating dummy SQL file for Rohit and Dante to send SQL queries to, as well as helping with the Sign up and Restaurant SQL queries. 
