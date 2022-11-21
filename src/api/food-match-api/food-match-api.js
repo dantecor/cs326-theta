@@ -114,10 +114,44 @@ router.get('/signup', (req, res) => {
 router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
     console.log(req.body);
     console.log(req.body);
+    const restaurantJSON = req.body;
+
     console.log("restaurantcreated");
-    res.send(req.body);
-    //res.send("restaurantcreated");
+
+    let isValidData = true;
+    if(isValidData)
+    {
+        const client = new Client({
+            connectionString: dbURL,
+            ssl: {
+              rejectUnauthorized: false
+            }
+          });
+        client.connect();
+        const text = 'INSERT INTO restaurants(res_id,name) VALUES($1, $2) RETURNING *'
+        const values = [3,restaurantJSON.name];
+        client.query
+        (
+            text,
+            values,
+            (err, res) =>
+            {
+
+                if (err) {
+                    console.log(err.stack)
+                } else {
+                    console.log(res.rows[0])
+                }
+            }
+        )
+    }
+    else
+    {
+        res.send("Invalid data");
+    }
 });
+
+
 
 router.get('/testing', (req, res) => {
 
