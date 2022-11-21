@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="signupscreen.css">
-    <center>
-        <h1 class ="font"> Create Account </h1>
-    </center>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href = "signupscreen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script type="module" src="./signupscreencontroller.js"></script>
 </head>
-<body>
-    <div class = "font">
-        <div class = "box">
-            <center>
-            <label> First name </label>
-            <br>
-            <input>  </input>
-            </center>
+
+<body style="background-color:rgb(0, 140, 255);">
+    <center>
+    <div class = "font" id= "main">
+        <div>
+            <br><br>
         </div>
-        <div class = "box">
-            <center>
-            <label> Last Name </label>
-            <br>
-            <input>  </input>
-        </center>
-        </div>
-        <div class = "box">
-            <center>
-            <label> Email </label>
-            <br>
-            <input>  </input>
-        </center>
-        </div>
-        <div class = "box">
-            <center>
-            <label> Password </label>
-            <br>
-            <input>  </input>
-            </center>
-        </div>
-        <div class = "box">
-            <center>
-            <label> Confirm Password </label>
-            <br>
-            <input>  </input>
-            </center>
-        </div>
-        <center>
-        <div style = "padding: 30px">
-            <div class = "box">
-                <h1>
-                    Select Allergens
-                </h1>
-                <select name="allergens" id="allergens">
-                </select>
-            </div>
-            </center>
-            <center>
-                <textarea disabled style = "resize: none" class = "box2" >
-                    This box will contain a list of allergens selected by the user. Each item will have an x button next to it for the user to remove it.
-                </textarea>
-            </center>
-            <center>
-                <a href="mainscreen.html">
-                <button class = "button">
-                        Sign Up!
-                </button>
-                </a>
-            </center>
-        </div>
+        <div class="card" style="width: 30rem; height: 45rem;">
+            <div class="card-body">
+                <center>
+                    <h1 class ="font-header"> Create Account </h1>
+                    <h2 class = "font-small"> Please use this form to create an account</h2>
+                </center>
+                <br>
+                <br>
+                <div class = "box-small">
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+                <div class = "box-small">
+                    <input type="text" class="form-control" id="secondName" placeholder="Last Name">
+                </div>
+                <div class = "box-small">
+                    <input type="text" class="form-control widebox" id="email" placeholder="Email">
+                </div>
+                <div class = "box-small">
+                    <input type="text" class="form-control widebox" id="password" placeholder="Password">
+                </div>
+                <div class = "box-small">
+                    <input type="text" class="form-control widebox" id="confirm" placeholder="Confirm Password">
+                </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Allergens
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" id = "gluten">Gluten</a>
+                          <a class="dropdown-item" id = "vegan">Vegan</a>
+                          <a class="dropdown-item" id = "soy">Soy</a>
+                        </div>
+                    </div>
+                    <div id = "selected"></div>
+                    <a >
+                    <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                    </a>
+                </div>
+          </div>
     </div>
+    </center>
 </body>
