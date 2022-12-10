@@ -93,10 +93,33 @@ router.get('/', (req, res) => {
   res.send(sampleRestaurant);
 })
 
-router.get('/restaurant', cors(), function (req, res, next) {
+router.get('/restaurants', cors(), function (req, res, next) {
+
+    let restaurants = [];
+
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      
+      client.connect();
+      
+      client.query('select * from restaurants;', (err, resp) => {
+        if (err) throw err;
+        for (let row of resp.rows) {
+          console.log(JSON.stringify(row));
+            restaurants.push(row);
+        }
+
+        client.end();
+        res.json(restaurants);
+        //res.send(JSON.stringify(restaurants));
+      });
     
     //const json = JSON.stringify(sampleRestaurant);
-    res.json(sampleRestaurant);
+    
     //res.send(json);
 
 })
