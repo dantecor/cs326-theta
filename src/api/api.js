@@ -45,6 +45,7 @@ app.get('/restaurantform', function(req, res) {
 });
 
 app.get('/restaurant', function(req, res) {
+    console.log("HLLLLO");
     const path = __dirname;
     res.sendFile(path+'/resources/RestaurantView.html');
 });
