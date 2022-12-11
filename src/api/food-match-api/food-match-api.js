@@ -157,6 +157,7 @@ router.post('/signup', cors(),bodyParser.json(), (req, res) => {
         }
         client.end();
       });
+      res.send("Success");
 });
 
 router.get('/emails', cors(), function (req, res, next) {
