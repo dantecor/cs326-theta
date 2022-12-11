@@ -8,6 +8,7 @@ const submit = document.getElementById("submit");
 let userData ={};
 
 function sendForm(){
+    console.log("here");
     (async () => {
         const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
           method: 'POST',

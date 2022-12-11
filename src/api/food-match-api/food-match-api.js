@@ -133,7 +133,6 @@ router.get('/about', (req, res) => {
 router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
 
     console.log("HERE");
-     /*
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -148,19 +147,34 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
       let email = req.body["email"];
       let password = req.body["password"];
       let allergens = req.body["allergens"];
+      let isGluten = false;
+      let isVegan = false;
+      let isVegetarian = false;
+      if(allergens.includes["Gluten"])
+      {
+        isGluten = true;
+      }
+      if(allergens.includes["Vegan"])
+      {
+        isVegan = true;
+      }
+      if(allergens.includes["Vegetarian"])
+      {
+        isVegetarian = true;
+      }
 
 
-      let query = "INSERT INTO users(user_id, first_name, last_name, email, password) VALUES($1, $2, $3, $4, $5)";
-      const values = [4, firstName, lastName, email, password];
+      let query = "INSERT INTO users(email, first_name, last_name, password, vegetarian, vegan, glutenfree) VALUES($1, $2, $3, $4, $5, $6, $7)";
+      const values = [email, firstName, lastName, password, isVegetarian, isVegan, isGluten];
 
       client.query(query, values, (err, res) => {
         if (err) 
         {
+            console.log("HERE");
             throw err;
         }
         client.end();
       });
-      */
 });
 
   
