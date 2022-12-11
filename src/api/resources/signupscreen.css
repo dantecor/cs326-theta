@@ -8,6 +8,10 @@
     color: gray;
 }
 
+.selected{
+
+}
+
 #dropdownMenuButton
 {
     background-color: rgb(0, 140, 255);
@@ -15,7 +19,7 @@
 
 #submit{
     background-color: rgb(0, 140, 255);
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .widebox{
@@ -41,6 +45,7 @@
     padding-bottom: 20px;
 
 }
+
 .box2{
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
