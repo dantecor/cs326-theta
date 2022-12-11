@@ -131,7 +131,6 @@ router.get('/about', (req, res) => {
 })
 
 router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
-    /*
 
     const client = new Client({
         connectionString: dbURL,
@@ -140,28 +139,26 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
         }
       });
       client.connect();
+
+      let query1 = "SELECT email FROM users";
+      let emails = "";
+      client.query(query1, (err, res) => {
+            if(err)
+            {
+                throw err;
+            }
+            emails = res;
+      });
+      console.log(emails);
+      /*
       
-      console.log(req.body);
       let firstName = req.body["first name"];
       let lastName = req.body["last name"];
       let email = req.body["email"];
       let password = req.body["password"];
-      let allergens = req.body["allergens"];
-      let isGluten = false;
-      let isVegan = false;
-      let isVegetarian = false;
-      if(allergens.includes["Gluten"])
-      {
-        isGluten = true;
-      }
-      if(allergens.includes["Vegan"])
-      {
-        isVegan = true;
-      }
-      if(allergens.includes["Vegetarian"])
-      {
-        isVegetarian = true;
-      }
+      let isGluten = req.body["isGluten"];
+      let isVegan = req.body["isVegan"];
+      let isVegetarian = req.body["isVegetarian"];
 
 
       let query = "INSERT INTO users(email, first_name, last_name, password, vegetarian, vegan, glutenfree) VALUES($1, $2, $3, $4, $5, $6, $7)";
@@ -174,7 +171,6 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
         }
         client.end();
       });
-      res.json("Success");
       */
 });
 

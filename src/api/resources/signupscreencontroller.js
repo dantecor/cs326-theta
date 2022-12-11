@@ -39,6 +39,10 @@ submit.addEventListener("click", (event) => {
     {
         window.alert("Enter every field please");
     }
+    else if(password !== confirm)
+    {
+        window.alert("Error: password not the same");
+    }
     else 
     {
         userData["first name"] = firstName;
@@ -46,8 +50,25 @@ submit.addEventListener("click", (event) => {
         userData["email"] = email;
         userData["password"] = password;
         userData["confirm"] = confirm;
-        console.log(allergens);
-        userData["allergens"] = allergens;
+        let isGluten = false;
+        let isVegan = false;
+        let isVegetarian = false;
+        if(allergens.includes("Gluten"))
+        {
+            isGluten = true;
+        }
+        if(allergens.includes("Gluten"))
+        {
+            isVegan = true;
+        }
+        if(allergens.includes("Gluten"))
+        {
+            isVegetarian = true;
+        }
+        userData["isGluten"] = isGluten;
+        userData["isVegan"] = isVegan;
+        userData["isVegetarian"] = isVegetarian;
+        console.log(userData);
         sendForm();
     }
 });
