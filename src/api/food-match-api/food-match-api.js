@@ -130,7 +130,7 @@ router.get('/about', (req, res) => {
   res.send('About foodmatch')
 })
 
-router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
+router.post('/signup', cors(),bodyParser.json(), (req, res) => {
 
     const client = new Client({
         connectionString: dbURL,
