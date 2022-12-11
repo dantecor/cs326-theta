@@ -270,14 +270,14 @@ router.get('/menus/restaurant/:restaurantName', (req, res) => {
         text: 'SELECT * from menus where res_name = $1',
         values: [name],
       }
-      client.query(query, (err, res) => {
+      client.query(query, (err, resp) => {
         if (err) throw err;
-        for (let row of res.rows) {
+        for (let row of resp.rows) {
           console.log(JSON.stringify(row));
             menuitems.push(row);
         }
         client.end();
-        res.json(JSON.stringify(menuitems));
+        res.json(menuitems);
       });
     
 });
