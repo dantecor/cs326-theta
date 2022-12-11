@@ -6,9 +6,9 @@
 
 const submit = document.getElementById("submit");
 let userData ={};
+let allergens = "";
 
 function sendForm(){
-    console.log("here");
     (async () => {
         const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
           method: 'POST',
@@ -19,7 +19,10 @@ function sendForm(){
           body: JSON.stringify(userData)
         });
         const content = await rawResponse.json();
-        console.log(content);
+        if(content.includes("Success"))
+        {
+            hre
+        }
       })();
 }
 
@@ -29,23 +32,6 @@ submit.addEventListener("click", (event) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirm = document.getElementById("confirm").value;
-    let allergens = "";
-    if(!document.getElementById("field") === null)
-    { 
-        field = document.getElementById("field").placeholder;
-        if(field.includes("Gluten"))
-        {
-            allergens += " Gluten "
-        }
-        if(field.includes("Vegan"))
-        {
-            allergens += " Vegan ";
-        }
-        if(field.includes("Soy"))
-        {
-            allergens += " Soy ";
-        }
-    }
 
     if(firstName.length === 0 || secondName.length === 0 || email.length === 0 || password.length === 0
     || confirm.length === 0)
@@ -67,6 +53,7 @@ submit.addEventListener("click", (event) => {
 //add gluten to selected field
 document.getElementById("gluten").addEventListener("click", (event) => 
 {
+    allergens += "Gluten";
     const selectedDiv = document.getElementById("selected");
     const div = document.createElement("div");
     div.classList.add("box-small");
@@ -97,6 +84,7 @@ document.getElementById("gluten").addEventListener("click", (event) =>
 //add vegan to selected field
 document.getElementById("vegan").addEventListener("click", (event) => 
 {
+    allergens += "Vegan";
     const selectedDiv = document.getElementById("selected");
     const div = document.createElement("div");
     div.classList.add("box-small");
@@ -127,6 +115,7 @@ document.getElementById("vegan").addEventListener("click", (event) =>
 //add soy to selected field
 document.getElementById("soy").addEventListener("click", (event) => 
 {
+    allergens += "Soy";
     const selectedDiv = document.getElementById("selected");
     const div = document.createElement("div");
     div.classList.add("box-small");

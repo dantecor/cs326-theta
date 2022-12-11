@@ -132,7 +132,6 @@ router.get('/about', (req, res) => {
 
 router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
 
-    console.log("HERE");
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -170,11 +169,11 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
       client.query(query, values, (err, res) => {
         if (err) 
         {
-            console.log("HERE");
             throw err;
         }
         client.end();
       });
+      res.json("Success");
 });
 
   
