@@ -9,6 +9,7 @@ let userData ={};
 let allergens = "";
 
 function sendForm(){
+    /*
     (async () => {
         const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
           method: 'POST',
@@ -21,9 +22,9 @@ function sendForm(){
         const content = await rawResponse.json();
         if(content.includes("Success"))
         {
-            hre
         }
       })();
+      */
 }
 
 submit.addEventListener("click", (event) => {
@@ -45,6 +46,7 @@ submit.addEventListener("click", (event) => {
         userData["email"] = email;
         userData["password"] = password;
         userData["confirm"] = confirm;
+        console.log("allergens");
         userData["allergens"] = allergens;
         sendForm();
     }

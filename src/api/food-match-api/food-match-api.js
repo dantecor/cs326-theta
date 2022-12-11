@@ -131,6 +131,7 @@ router.get('/about', (req, res) => {
 })
 
 router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
+    /*
 
     const client = new Client({
         connectionString: dbURL,
@@ -174,6 +175,7 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
         client.end();
       });
       res.json("Success");
+      */
 });
 
   
