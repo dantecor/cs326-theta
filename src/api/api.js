@@ -52,6 +52,7 @@ app.get('/restaurant', function(req, res) {
 
 //ROHIT
 app.get('/signup', function(req, res) {
+    console.log("ERE");
     const path = __dirname;
     res.sendFile(path+'/resources/signup.html');
 });

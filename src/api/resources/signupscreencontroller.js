@@ -9,7 +9,7 @@ let userData ={};
 
 function sendForm(){
     (async () => {
-        const rawResponse = await fetch('http://localhost:3000/api/signup', {
+        const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

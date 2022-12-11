@@ -28,6 +28,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
  
 // POST /login gets urlencoded bodies
 router.post('/login', urlencodedParser, function (req, res) {
+  console.log("HERE");
   res.send('welcome, ' + req.body.username)
 })
 
@@ -132,6 +133,8 @@ router.get('/about', (req, res) => {
 })
 
 router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
+    console.log("HERE");
+    /*
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -158,6 +161,8 @@ router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
         }
         client.end();
       });
+      */
+     res.send("HERE");
 });
 
   
@@ -204,6 +209,8 @@ router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
 
 
 router.get('/testing', (req, res) => {
+
+    res.send("HERE");
 
     const client = new Client({
         connectionString: dbURL,
