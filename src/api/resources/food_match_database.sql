@@ -222,7 +222,6 @@ INSERT INTO allergy_info VALUES(
     false
 );
 
-
 CREATE TABLE users(
 	user_id int, 
     first_name text, 
@@ -232,3 +231,9 @@ CREATE TABLE users(
     PRIMARY KEY(user_id), 
     FOREIGN KEY(user_id) REFERENCES allergy_info(user_id) 
 );
+
+/*
+CREATE VIEW public_users AS
+SELECT user_id, first_name, last_name, email
+FROM users;
+*/
