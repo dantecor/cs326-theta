@@ -96,7 +96,6 @@ router.get('/', (req, res) => {
 
 router.get('/restaurants', cors(), function (req, res, next) {
 
-    console.log("HERE");
     let restaurants = [];
 
     const client = new Client({
@@ -131,7 +130,6 @@ router.get('/about', (req, res) => {
 })
 
 router.post('/signup', cors(),bodyParser.json(), (req, res) => {
-
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -139,18 +137,6 @@ router.post('/signup', cors(),bodyParser.json(), (req, res) => {
         }
       });
       client.connect();
-
-      let query1 = "SELECT email FROM users";
-      let emails = "";
-      client.query(query1, (err, res) => {
-            if(err)
-            {
-                throw err;
-            }
-            emails = res;
-      });
-      console.log(emails);
-      /*
       
       let firstName = req.body["first name"];
       let lastName = req.body["last name"];
@@ -171,7 +157,32 @@ router.post('/signup', cors(),bodyParser.json(), (req, res) => {
         }
         client.end();
       });
-      */
+});
+
+router.get('/emails', cors(), function (req, res, next) {
+
+    let emails = [];
+
+    console.log("HER");
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      
+    client.connect();
+    client.query('SELECT email FROM users;', (err, resp) => {
+        if (err) throw err;
+        for (let row of resp.rows) {
+          console.log(JSON.stringify(row));
+            emails.push(row);
+        }
+
+        client.end();
+        res.json(emails);
+        //res.send(JSON.stringify(restaurants));
+      });
 });
 
   
@@ -218,7 +229,7 @@ router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
 
 
 router.get('/testing', (req, res) => {
-
+    
     res.send("HERE");
 
     const client = new Client({

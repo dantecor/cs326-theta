@@ -20,11 +20,13 @@ function sendForm(){
           body: JSON.stringify(userData)
         });
         const content = await rawResponse.json();
+        console.log(content);
         if(content.includes("Success"))
         {
         }
       })();
 }
+
 
 submit.addEventListener("click", (event) => {
     const firstName = document.getElementById("firstName").value;
@@ -32,6 +34,12 @@ submit.addEventListener("click", (event) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirm = document.getElementById("confirm").value;
+
+    (async ()=>{ 
+        const data = await fetch("https://cs326-theta.herokuapp.com/api/emails");
+        const resp = await data.json();
+        console.log(resp);
+    })();
 
     if(firstName.length === 0 || secondName.length === 0 || email.length === 0 || password.length === 0
     || confirm.length === 0)
@@ -42,7 +50,7 @@ submit.addEventListener("click", (event) => {
     {
         window.alert("Error: password not the same");
     }
-    else 
+    else
     {
         userData["first name"] = firstName;
         userData["last name"] = secondName;
@@ -68,7 +76,7 @@ submit.addEventListener("click", (event) => {
         userData["isVegan"] = isVegan;
         userData["isVegetarian"] = isVegetarian;
         console.log(userData);
-        sendForm();
+        //sendForm();
     }
 });
 
