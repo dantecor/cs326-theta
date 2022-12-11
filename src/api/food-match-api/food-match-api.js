@@ -26,6 +26,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
  
 // POST /login gets urlencoded bodies
 router.post('/login', urlencodedParser, function (req, res) {
+  console.log("HERE");
   res.send('welcome, ' + req.body.username)
 })
 
@@ -128,10 +129,62 @@ router.get('/about', (req, res) => {
   res.send('About foodmatch')
 })
 
-//ROHIT: define the signup route
-router.get('/signup', (req, res) => {
-    res.send('Signup page');
-})
+router.post('/signup', cors(),bodyParser.json(), (req, res) => {
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      client.connect();
+      
+      let firstName = req.body["first name"];
+      let lastName = req.body["last name"];
+      let email = req.body["email"];
+      let password = req.body["password"];
+      let isGluten = req.body["isGluten"];
+      let isVegan = req.body["isVegan"];
+      let isVegetarian = req.body["isVegetarian"];
+
+
+      let query = "INSERT INTO users(email, first_name, last_name, password, vegetarian, vegan, glutenfree) VALUES($1, $2, $3, $4, $5, $6, $7)";
+      const values = [email, firstName, lastName, password, isVegetarian, isVegan, isGluten];
+
+      client.query(query, values, (err, res) => {
+        if (err) 
+        {
+            throw err;
+        }
+        client.end();
+      });
+      res.send("Success");
+});
+
+router.get('/emails', cors(), function (req, res, next) {
+
+    let emails = [];
+
+    console.log("HER");
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      
+    client.connect();
+    client.query('SELECT email FROM users;', (err, resp) => {
+        if (err) throw err;
+        for (let row of resp.rows) {
+          console.log(JSON.stringify(row));
+            emails.push(row);
+        }
+
+        client.end();
+        res.json(emails);
+        //res.send(JSON.stringify(restaurants));
+      });
+});
 
   
 router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
@@ -177,6 +230,8 @@ router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
 
 
 router.get('/testing', (req, res) => {
+    
+    res.send("HERE");
 
     const client = new Client({
         connectionString: dbURL,
@@ -205,8 +260,4 @@ router.get('*', (req, res) => {
 
 
 
-
-
-
 module.exports = router
-
