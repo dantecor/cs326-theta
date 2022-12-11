@@ -21,7 +21,7 @@ restName = restName.replace(" ", "+");
 console.log(restName);
 
 
-(async ()=>{ const data = await fetch("https://cs326-theta.herokuapp.com/api/menu/restaurant/"+restName);
+(async ()=>{ const data = await fetch("https://cs326-theta.herokuapp.com/api/menus/restaurant/"+restName);
   if(data.ok)
   {
     restaurant = await data.json();
