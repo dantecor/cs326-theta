@@ -252,6 +252,40 @@ router.get('/testing', (req, res) => {
     
 });
 
+router.get('/menus/restaurant/:restaurantName', (req, res) => {
+
+    const menuitems = [];
+    const restaurantName = req.params.restaurantName;
+    const name = restaurantName.replace('+', ' ');
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      
+      client.connect();
+      
+      const query = {
+        text: 'SELECT * from menus where res_name = $1',
+        values: [name],
+      }
+      client.query(query, (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          console.log(JSON.stringify(row));
+            menuitems.push(row);
+        }
+        client.end();
+        res.json(JSON.stringify(menuitems));
+      });
+    
+});
+
+
+
+
+
 //handle wildcard
 router.get('*', (req, res) => {
     res.send('404: Page not found');
