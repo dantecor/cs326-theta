@@ -146,12 +146,12 @@ app.post('/register',
 	});
 
 
-
+/*
 app.get('/', (req, res) => {
     const path = __dirname;
     res.sendFile(path+'/resources/homepage.html');
 });
-
+*/
 
 app.get('/home', function(req, res) {
     const path = __dirname;
