@@ -26,6 +26,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
  
 // POST /login gets urlencoded bodies
 router.post('/login', urlencodedParser, function (req, res) {
+  console.log("HERE");
   res.send('welcome, ' + req.body.username)
 })
 
@@ -95,6 +96,7 @@ router.get('/', (req, res) => {
 
 router.get('/restaurants', cors(), function (req, res, next) {
 
+    console.log("HERE");
     let restaurants = [];
 
     const client = new Client({
@@ -128,10 +130,38 @@ router.get('/about', (req, res) => {
   res.send('About foodmatch')
 })
 
-//ROHIT: define the signup route
-router.get('/signup', (req, res) => {
-    res.send('Signup page');
-})
+router.post('/signup', cors(),bodyParser.json(), (req, res, next) => {
+    /*
+    console.log("HERE");
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      client.connect();
+      
+      console.log(req.body);
+      let firstName = req.body["first name"];
+      let lastName = req.body["last name"];
+      let email = req.body["email"];
+      let password = req.body["password"];
+      let allergens = req.body["allergens"];
+
+
+      let query = "INSERT INTO users(user_id, first_name, last_name, email, password) VALUES($1, $2, $3, $4, $5)";
+      const values = [4, firstName, lastName, email, password];
+
+      client.query(query, values, (err, res) => {
+        if (err) 
+        {
+            throw err;
+        }
+        client.end();
+      });
+      */
+     res.send("HERE");
+});
 
   
 router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
@@ -178,6 +208,8 @@ router.post('/createRestaurant', cors(),bodyParser.json(), (req, res, next) => {
 
 router.get('/testing', (req, res) => {
 
+    res.send("HERE");
+
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -205,8 +237,4 @@ router.get('*', (req, res) => {
 
 
 
-
-
-
 module.exports = router
-
