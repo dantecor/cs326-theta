@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const cors = require('cors')
 const bodyParser = require('body-parser')
+//add url encoding replace space with +
+router.use(express.urlencoded({ extended: true }));
 
 const jsonParser = bodyParser.json()
 
@@ -255,8 +257,8 @@ router.get('/testing', (req, res) => {
 router.get('/menus/restaurant/:restaurantName', (req, res) => {
 
     const menuitems = [];
-    const restaurantName = req.params.restaurantName;
-    const name = restaurantName.replace('+', ' ');
+    const name = req.params.restaurantName;
+    //const name = restaurantName.replace('+', ' ');
     const client = new Client({
         connectionString: dbURL,
         ssl: {
@@ -267,7 +269,8 @@ router.get('/menus/restaurant/:restaurantName', (req, res) => {
       client.connect();
       
       const query = {
-        text: 'SELECT * from menus where res_name = $1',
+        //text: 'SELECT * from menus where res_name = $1 and ',
+        text: 'SELECT * FROM restaurants JOIN menus ON restaurants.name = menus.res_name where res_name = $1',
         values: [name],
       }
       client.query(query, (err, resp) => {

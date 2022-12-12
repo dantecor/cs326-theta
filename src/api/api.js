@@ -9,7 +9,36 @@ const MiniCrypt = require('./miniCrypt');
 const expressSession = require('express-session');
 const mc = new MiniCrypt();
 const app = express();
+
+//add url encoding replace space with +
+app.use(express.urlencoded({ extended: true }));
+
+
+
+//app.use(cors());
+
+app.use(cors());
+
+const bodyParser = require('body-parser');
 const port = 3000;
+const { Client } = require('pg');
+
+let secrets;
+let dbURL;
+if (!process.env.DATABASE_URL) 
+{
+    secrets = require('./../../secrets.json');
+    dbURL = secrets.dbURI;
+} 
+    else 
+{
+    dbURL = process.env.DATABASE_URL;
+}
+
+
+ 
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const session = {
     secret : process.env.SECRET || 'SECRET', // set this encryption key in Heroku config (never in GitHub)!
@@ -55,10 +84,26 @@ app.use(express.urlencoded({'extended' : true})); // allow URLencoded data
 
 
 let users = {};
+//populate users with data from database
+const client = new Client({
+    connectionString: dbURL,
+    ssl: {
+
+        rejectUnauthorized: false
+    }
+});
+client.connect();
+client.query('SELECT * FROM users', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        users[row.username] = [row.password, row.email];
+    }
+    client.end();
+});
+        
 
 
 app.use('/resources', express.static(path.resolve(__dirname, "resources")));
-app.use(cors());
 app.set('view engine', 'ejs');
 //app.use(bodyParser.urlencoded({extended:true}));
 app.set('views',__dirname+'/resources');
@@ -90,25 +135,47 @@ function validatePassword(name, pwd) {
 }
 
 // Add a user to the "database".
-function addUser(name, pwd) {
+function addUser(name, pwd, req) {
     if (findUser(name)) {
 	return false;
     }
     const [salt, hash] = mc.hash(pwd);
     users[name] = [salt, hash];
     // Now print the user database
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+
+            rejectUnauthorized: false
+        }
+    });
+    let firstName = req.body["first name"];
+    let lastName = req.body["last name"];
+    let email = req.body["email"];
+    let password = req.body["password"];
+    let isGluten = req.body["isGluten"];
+    let isVegan = req.body["isVegan"];
+    let isVegetarian = req.body["isVegetarian"];
+    client.connect();
+    let values = [email, firstName, lastName, salt, hash, isVegetarian, isVegan, isGluten];
+    client.query('INSERT INTO users (email, first_name, last_name,salt,hash,vegetarian,vegan,glutenfree) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', values, (err, res) => {
+        if (err) throw err;
+        client.end();
+    });
+
+
     console.log(users);
     return true;
 }
 
 function checkLoggedIn(req, res, next) {
-    let test = true;
-    if (req.isAuthenticated()||test) {
+    
+    if (req.isAuthenticated()) {
 	// If we are authenticated, run the next route.
 	next();
     } else {
 	// Otherwise, redirect to the login page.
-	res.redirect('/homepage.html');
+	res.redirect('/login');
     }
 }
 
@@ -121,13 +188,18 @@ app.get('/',
 
 app.post('/login',
 	 passport.authenticate('local' , {     // use username/password authentication
-	     'successRedirect' : '/private',   // when we login, go to /private 
+	     'successRedirect' : '/main',   // when we login, go to /private 
 	     'failureRedirect' : '/login'      // otherwise, back to login
 }));
 
 app.get('/login',
-	(req, res) => res.sendFile('html/login.html',
-				   { 'root' : __dirname }));
+	(req, res) => 
+    {
+        const path = __dirname;
+	    res.sendFile(path+'/resources/homepage.html');
+    }
+);
+
 
 app.get('/logout', (req, res) => {
                     req.logout(); // Logs us out!
@@ -181,20 +253,74 @@ app.get('/restaurant', function(req, res) {
 //ROHIT
 app.get('/signup', function(req, res) {
     const path = __dirname;
-    res.sendFile(path+'/resources/signup.html');
+    res.sendFile(path+'/resources/signupscreen.html');
 });
 
 app.get('/RestaurantMenu/:RestaurantName', function(req, res) {
-    //get the restaurant name from the url
+    
     const restaurant = req.params.RestaurantName;
-    const resName = restaurant.replace("+", " ");
-    //serve the restaurant menu page
-    //render with ejs
+    //const resName = restaurant.replace("+", " ");
+   
     res.render('RestaurantView', {
-        restaurantName: resName
+        restaurantName: restaurant
     });
     //const path = __dirname;
     //res.sendFile(path+'/resources/signup.html');
+});
+
+
+app.post('/signup',bodyParser.json(), (req, res) => {
+      let email = req.body["email"];
+      let password = req.body["password"];
+    /*
+      let firstName = req.body["first name"];
+      let lastName = req.body["last name"];
+      let email = req.body["email"];
+      let password = req.body["password"];
+      let isGluten = req.body["isGluten"];
+      let isVegan = req.body["isVegan"];
+      let isVegetarian = req.body["isVegetarian"];
+      */
+    if (addUser(email, password ,req)) {
+        //res.redirect('/login');
+
+        //send json response to the client
+        //res.json(req.body);
+        res.json({success: true});
+        } else {
+        //res.redirect('/signup');
+        res.json({success: false});
+        }
+
+
+
+
+        /*
+
+
+    const client = new Client({
+        connectionString: dbURL,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
+      client.connect();
+      
+      
+
+
+      let query = "INSERT INTO users(email, first_name, last_name, password, vegetarian, vegan, glutenfree) VALUES($1, $2, $3, $4, $5, $6, $7)";
+      const values = [email, firstName, lastName, password, isVegetarian, isVegan, isGluten];
+
+      client.query(query, values, (err, res) => {
+        if (err) 
+        {
+            throw err;
+        }
+        client.end();
+      });
+      //res.send("Success");
+      */
 });
 
 

@@ -27,9 +27,21 @@ button.addEventListener("click", () => {
 
       let temp2 = document.createElement("a");
       temp2.classList = "list-group-item";
-      temp2.href = "RestaurantView.html";
+      //temp2.href = "RestaurantView.html";
       temp2.id = ""+(i+1);
       temp2.innerHTML = name;
+      //let tempName = name.replace(' ', '+');
+      /*
+      temp2.addEventListener("click", () => {
+
+        //url for localhost 
+        //
+        let url = "http://localhost:3000/RestaurantMenu/"+tempName;
+        console.log(temp2.href);
+        window.location.href = url;
+      });
+      */
+      temp2.href = "https://cs326-theta.herokuapp.com/RestaurantMenu/"+name;
       selected.appendChild(temp2);
     }
   }
