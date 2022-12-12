@@ -103,7 +103,7 @@ function sendForm(){
     const restaurant = compileData();
     
     (async () => {
-        const rawResponse = await fetch('http://localhost:3000/api/createRestaurant', {
+        const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/createRestaurant', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

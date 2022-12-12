@@ -11,7 +11,8 @@ let allergens = "";
 function sendForm(){
 
     (async () => {
-        const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
+        //const rawResponse = await fetch('https://cs326-theta.herokuapp.com/api/signup', {
+        const rawResponse = await fetch('https://cs326-theta.herokuapp.com/signup', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -20,6 +21,19 @@ function sendForm(){
           body: JSON.stringify(userData)
         });
         const content = await rawResponse.json();
+        console.log(content);
+        if(content["success"])
+        {
+            window.alert("Account created");
+            window.location.href = "homepage.html";
+        }
+        else
+        {
+            window.alert("Account Already Exists");
+            window.location.href = "homepage.html";
+            
+        }
+        
       })();
 }
 
@@ -83,7 +97,7 @@ submit.addEventListener("click", (event) => {
         userData["isVegetarian"] = isVegetarian;
         console.log(userData);
         sendForm();
-        location.href = "mainscreen.html";
+        //location.href = "mainscreen.html";
     }
 });
 
